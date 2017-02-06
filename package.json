@@ -1,0 +1,24 @@
+{
+  "name": "couchdb-session",
+  "version": "0.0.1",
+  "description": "persist couchdb session",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sofajs/couchdb-session.git"
+  },
+  "keywords": [
+    "couchdb",
+    "session",
+    "manage"
+  ],
+  "author": "Jon Swenson",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/sofajs/couchdb-session/issues"
+  },
+  "homepage": "https://github.com/sofajs/couchdb-session#readme"
+}
