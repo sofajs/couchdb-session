@@ -7,7 +7,6 @@ const Lab = require('lab');
 const CouchdbSession = require('../lib');
 const Hoek = require('hoek');
 const Session = require('../lib/session');
-// const Path = require('path');
 
 // Declare internals
 
@@ -43,13 +42,11 @@ describe('/index', () => {
         CouchdbSession(Config)
             .then((result) => {
 
-                console.log('hi');
                 expect(result.status).to.equal(200);
                 return done();
             })
             .catch((err) => {
 
-                //console.log('hi' + err);
                 Hoek.assert(!err, err);
                 // return done();
             });
@@ -77,7 +74,6 @@ describe('/index', () => {
             })
             .catch((err) => {
 
-                // console.log('hi' + JSON.stringify(err, 2, '\t'));
                 expect(err.status.name).to.equal('Error');
                 return done();
             });
@@ -163,8 +159,6 @@ describe('/session expired regenerate', () => {
         const original = Session.expires;
         Session.expires = Session.expires - (11 * 60 * 1000);
 
-        console.log('TEST MOCK:          ' + Session.expires);
-
         const Config = {
             host: 'http://localhost',
             port: 5984,
@@ -176,8 +170,7 @@ describe('/session expired regenerate', () => {
             .then((result) => {
 
                 Session.expires = original;
-                // expect(result.status).to.equal(200);
-                console.log('new session after expiration.' + JSON.stringify(result));
+                expect(result.status).to.equal(200);
                 return done();
             });
     });
@@ -233,7 +226,7 @@ describe('/session expired fail regenerate', () => {
     });
 });
 
-describe('/session expiresSoon()', () => {
+describe('/session expiresSoon()', { timeout: 4000 }, () => {
 
     before((done) => {
 
@@ -275,7 +268,6 @@ describe('/session expiresSoon()', () => {
         CouchdbSession(Config)
             .then((result) => {
 
-                console.log('EXPIRES_SOON: ' + JSON.stringify(result));
                 Session.expires = original;
                 expect(result.status).to.equal(200);
                 return done();
@@ -283,7 +275,7 @@ describe('/session expiresSoon()', () => {
     });
 });
 
-describe('/session expiresSoon() fail', () => {
+describe('/session expireSoon() fail', { timeout: 4000 }, () => {
 
     before((done) => {
 
@@ -325,7 +317,6 @@ describe('/session expiresSoon() fail', () => {
         CouchdbSession(Config)
             .catch((error) => {
 
-                console.log('EXPIRES_SOON_ERROR: ' + JSON.stringify(error));
                 Session.expires = original;
                 expect(error.status.name).to.equal('Error');
                 return done();
