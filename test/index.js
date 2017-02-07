@@ -45,11 +45,11 @@ describe('/make user', () => {
             json: true // Automatically parses the JSON string in the response
         };
 
-        return Rp(options)
+        Rp(options)
             .then((result) => {
 
                 expect(result).to.exist();
-                done();
+                return done();
             });
 
     });
