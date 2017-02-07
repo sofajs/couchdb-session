@@ -39,7 +39,7 @@ describe('/make user', () => {
 
         const options = {
             method: 'PUT',
-            uri: Config.host + ':' + Config.port + '/_admins/' + Config.username,
+            uri: Config.host + ':' + Config.port + '/_config/_admins/' + Config.username,
             body: Config.password,
             resolveWithFullResponse: true,
             json: true // Automatically parses the JSON string in the response
