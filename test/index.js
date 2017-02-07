@@ -8,6 +8,7 @@ const CouchdbSession = require('../lib');
 const Hoek = require('hoek');
 const Session = require('../lib/session');
 
+
 // Declare internals
 
 const internals = {};
@@ -21,6 +22,39 @@ const before = lab.before;
 const expect = Code.expect;
 const it = lab.test;
 
+const Rp = require('request-promise');
+
+describe('/make user', () => {
+
+    it('generate db admin user', (done) => {
+
+        // make new admin user
+
+        const Config = {
+            host: 'http://localhost',
+            port: 5984,
+            username: 'sociallocal',
+            password: 'b14sT-0ffi'
+        };
+
+        const options = {
+            method: 'PUT',
+            uri: Config.host + ':' + Config.port + '/_admins/' + Config.username,
+            body: Config.password,
+            resolveWithFullResponse: true,
+            json: true // Automatically parses the JSON string in the response
+        };
+
+        return Rp(options)
+            .then((result) => {
+
+                expect(result).to.exist();
+                done();
+            });
+
+    });
+
+});
 
 describe('/index', () => {
 
