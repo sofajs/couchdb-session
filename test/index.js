@@ -22,39 +22,39 @@ const before = lab.before;
 const expect = Code.expect;
 const it = lab.test;
 
-const Rp = require('request-promise');
+// const Rp = require('request-promise');
 
-describe('/make user', () => {
-
-    it('generate db admin user', (done) => {
-
-        // make new admin user
-
-        const Config = {
-            host: 'http://localhost',
-            port: 5984,
-            username: 'sociallocal',
-            password: 'b14sT-0ffi'
-        };
-
-        const options = {
-            method: 'PUT',
-            uri: Config.host + ':' + Config.port + '/_config/_admins/' + Config.username,
-            body: Config.password,
-            resolveWithFullResponse: true,
-            json: true // Automatically parses the JSON string in the response
-        };
-
-        Rp(options)
-            .then((result) => {
-
-                expect(result).to.exist();
-                return done();
-            });
-
-    });
-
-});
+// describe('/make user', () => {
+//
+//     it('generate db admin user', (done) => {
+//
+//         // make new admin user
+//
+//         const Config = {
+//             host: 'http://localhost',
+//             port: 5984,
+//             username: 'sociallocal',
+//             password: 'b14sT-0ffi'
+//         };
+//
+//         const options = {
+//             method: 'PUT',
+//             uri: Config.host + ':' + Config.port + '/_config/_admins/' + Config.username,
+//             body: Config.password,
+//             resolveWithFullResponse: true,
+//             json: true // Automatically parses the JSON string in the response
+//         };
+//
+//         Rp(options)
+//             .then((result) => {
+//
+//                 expect(result).to.exist();
+//                 return done();
+//             });
+//
+//     });
+//
+// });
 
 describe('/index', () => {
 
@@ -68,7 +68,6 @@ describe('/index', () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -96,7 +95,6 @@ describe('/index', () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -129,7 +127,6 @@ describe('/session already exists', () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -175,7 +172,6 @@ describe('/session expired regenerate', () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -225,7 +221,6 @@ describe('/session expired fail regenerate', () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -274,7 +269,6 @@ describe('/session expiresSoon()', { timeout: 4000 }, () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
@@ -323,7 +317,6 @@ describe('/session expireSoon() fail', { timeout: 4000 }, () => {
         };
 
         Session.cookie = null;
-        Session.cookieVerbose = null;
         Session.expires = null;
         Session.expiresString = null;
         Session.status = undefined;
