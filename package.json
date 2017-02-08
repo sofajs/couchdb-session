@@ -1,6 +1,6 @@
 {
   "name": "couchdb-session",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "persist couchdb session",
   "main": "lib/index.js",
   "scripts": {
